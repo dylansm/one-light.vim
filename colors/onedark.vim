@@ -1,4 +1,4 @@
-set background=dark
+et background=dark
 
 hi clear
 
@@ -332,7 +332,7 @@ call s:X("SpecialKey","444444",g:onedark_background_color,"",s:termBlack,"")
 
 call s:X("Search","","63535B","underline","Magenta","")
 
-call s:X("Directory","dad085","","","Yellow","")
+call s:X("Directory","1188BB","","","Yellow","")
 call s:X("ErrorMsg","","902020","","","DarkRed")
 hi! link Error ErrorMsg
 hi! link MoreMsg Special
@@ -543,3 +543,4 @@ delf s:grey_color
 delf s:grey_level
 delf s:grey_number
 " }}}
+
