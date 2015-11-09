@@ -1,4 +1,4 @@
-et background=dark
+set background=dark
 
 hi clear
 
