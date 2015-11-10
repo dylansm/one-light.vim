@@ -274,8 +274,8 @@ else
 endif
 
 if version >= 700
-  call s:X("CursorLine","","1E222A","","",s:termBlack)
-  call s:X("CursorColumn","","1c1c1c","","",s:termBlack)
+  call s:X("CursorLine","","282828","","",s:termBlack)
+  call s:X("CursorColumn","","242424","","",s:termBlack)
   call s:X("MatchParen","ffffff","556779","bold","","DarkCyan")
 
   call s:X("TabLine","000000","b0b8c0","italic","",s:termBlack)
