@@ -248,7 +248,8 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
 endfun
 " }}}
 
-let background_color = "292c33"
+"let background_color = "292c33"
+let background_color = "303030"
 let normal_font_color = "ABB2BF"
 let blue = "61afef"
 let purple = "c678dd"
@@ -259,7 +260,8 @@ let red = "e06c75"
 let cyan = "56b6c2"
 
 if !exists("g:onedark_background_color")
-  let g:onedark_background_color = "292c33"
+  "let g:onedark_background_color = "292c33"
+  let g:onedark_background_color = "303030"
 end
 
 call s:X("Normal",normal_font_color,g:onedark_background_color,"","5f6b85","")
