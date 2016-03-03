@@ -322,6 +322,7 @@ call s:X("Identifier","c6b6ee","","","LightCyan","")
 call s:X("Structure",purple,"","","Violet","")
 call s:X("Function",blue,"","","SolarizedBlue","")
 call s:X("Statement",purple,"","","Violet","")
+call s:X("Attribute",orange,"","italic","Violet","")
 call s:X("PreProc",purple,"","","Violet","")
 call s:X("Boolean", orange, "", "", "", "")
 call s:X("Keyword", purple, "", "", "", "")
@@ -423,9 +424,20 @@ hi! link erlangDirective Statement
 hi! link erlangNode Identifier
 
 " JavaScript
+call s:X("jsStatement",red,"","","Cyan","") " pangloss/javascript return statement
+call s:X("jsImportContainer",blue,"","","Blue","")
+" call s:X("javascriptReturn",red,"","","Cyan","") " yajs return statement
+" call s:X("javascriptImportDef",blue,"","","Blue","")
+" call s:X("javascriptImport",yellow,"","","Blue","")
+" call s:X("javascriptImportBlock",blue,"","","Blue","")
+" call s:X("javascriptIdentifierName",blue,"","","Blue","")
+" call s:X("javascriptArrowFunc",cyan,"","","Blue","")
+" call s:X("javascriptBraces",cyan,"","","Blue","")
+
 
 hi! link javaScriptValue Constant
 hi! link javaScriptRegexpString rubyRegexp
+hi! link javaScriptStatement jsStatement
 
 " CoffeeScript
 
@@ -460,20 +472,35 @@ hi! link vimOper Normal
 " HTML
 
 hi! link htmlTag Statement
+hi! link htmlArg Attribute
 hi! link htmlEndTag htmlTag
 hi! link htmlTagName htmlTag
 
-" XML
+" Javascript.JSX
+call s:X("jsBlock",cyan,"","","Violet","")
+call s:X("es6FatArrow",purple,"","","Violet","")
+call s:X("jsFuncID",purple,"","","Violet","")
 
-hi! link xmlTag Statement
+hi! link jsBlock jsBlock
+hi! link jsArrowFunction es6FatArrow
+hi! link jsFuncCall jsFuncID
+
+" XML
+call s:X("xmlAttribute",orange,"","italic","Violet","")
+call s:X("xmlTag",purple,"","","Violet","")
+call s:X("xmlTagNameID",blue,"","","Violet","")
+
+" hi! link xmlTag Statement
 hi! link xmlEndTag xmlTag
-hi! link xmlTagName xmlTag
+hi! link xmlTagName xmlTagNameID
 hi! link xmlEqual xmlTag
 hi! link xmlEntity Special
 hi! link xmlEntityPunct xmlEntity
 hi! link xmlDocTypeDecl PreProc
 hi! link xmlDocTypeKeyword PreProc
-hi! link xmlProcessingDelim xmlAttrib
+hi! link xmlProcessingDelim xmlAttribute
+hi! link xmlAttrib xmlAttribute
+
 
 " Debugger.vim
 
