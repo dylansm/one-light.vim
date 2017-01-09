@@ -8,11 +8,7 @@ endif
 
 let colors_name = "onedark"
 
-if has("gui_running") || &t_Co == 88 || &t_Co == 256
-  let s:low_color = 0
-else
-  let s:low_color = 1
-endif
+let s:low_color = 0
 
 " Color approximation functions by Henry So, Jr. and David Liang {{{
 " Added to onedark.vim by Daniel Herbert
@@ -212,39 +208,26 @@ endfun
 
 " sets the highlighting for the given group
 fun! s:X(group, fg, bg, attr, lcfg, lcbg)
-  if s:low_color
-    let l:fge = empty(a:lcfg)
-    let l:bge = empty(a:lcbg)
+  let l:fge = empty(a:fg)
+  let l:bge = empty(a:bg)
 
-    if !l:fge && !l:bge
-      exec "hi ".a:group." ctermfg=".a:lcfg." ctermbg=".a:lcbg
-    elseif !l:fge && l:bge
-      exec "hi ".a:group." ctermfg=".a:lcfg." ctermbg=NONE"
-    elseif l:fge && !l:bge
-      exec "hi ".a:group." ctermfg=NONE ctermbg=".a:lcbg
-    endif
-  else
-    let l:fge = empty(a:fg)
-    let l:bge = empty(a:bg)
-
-    if !l:fge && !l:bge
-      exec "hi ".a:group." guifg=#".a:fg." guibg=#".a:bg." ctermfg=".s:rgb(a:fg)." ctermbg=".s:rgb(a:bg)
-    elseif !l:fge && l:bge
-      exec "hi ".a:group." guifg=#".a:fg." guibg=NONE ctermfg=".s:rgb(a:fg)." ctermbg=NONE"
-    elseif l:fge && !l:bge
-      exec "hi ".a:group." guifg=NONE guibg=#".a:bg." ctermfg=NONE ctermbg=".s:rgb(a:bg)
-    endif
+  if !l:fge && !l:bge
+    exec "hi ".a:group." guifg=#".a:fg." guibg=#".a:bg." ctermfg=".s:rgb(a:fg)." ctermbg=".s:rgb(a:bg)
+  elseif !l:fge && l:bge
+    exec "hi ".a:group." guifg=#".a:fg." guibg=NONE ctermfg=".s:rgb(a:fg)." ctermbg=NONE"
+  elseif l:fge && !l:bge
+    exec "hi ".a:group." guifg=NONE guibg=#".a:bg." ctermfg=NONE ctermbg=".s:rgb(a:bg)
   endif
 
-  if a:attr == ""
-    exec "hi ".a:group." gui=none cterm=none"
-  else
-    let l:noitalic = join(filter(split(a:attr, ","), "v:val !=? 'italic'"), ",")
-    if empty(l:noitalic)
-      let l:noitalic = "none"
-    endif
-    exec "hi ".a:group." gui=".a:attr." cterm=".l:noitalic
-  endif
+  " if a:attr == ""
+    " exec "hi ".a:group." gui=none cterm=none"
+  " else
+    " let l:noitalic = join(filter(split(a:attr, ","), "v:val !=? 'italic'"), ",")
+    " if empty(l:noitalic)
+      " let l:noitalic = "none"
+    " endif
+    " exec "hi ".a:group." gui=".a:attr." cterm=".l:noitalic
+  " endif
 endfun
 " }}}
 
@@ -480,19 +463,34 @@ hi! link htmlTagName htmlTag
 call s:X("jsBlock",cyan,"","","Violet","")
 call s:X("es6FatArrow",purple,"","","Violet","")
 call s:X("jsFuncID",purple,"","","Violet","")
+call s:X("jsxComment","5f6b85","","italic","Grey","")
+call s:X("jsxCommentDelim","5f6b85","","italic","Grey","")
+call s:X("jsxParensErrC","","303030","","Grey","")
+" jsParensErrC
 
 hi! link jsBlock jsBlock
 hi! link jsArrowFunction es6FatArrow
 hi! link jsFuncCall jsFuncID
+hi! link jsxComment jsxComment
+" override mistake
+" hi! link jsParensErrC jsxParensErrC
+
+" UltiSnips Snippets
+call s:X("leadingSpace",purple,"","","Violet","")
+
+hi! link snipLeadingSpaces leadingSpace
 
 " XML
 call s:X("xmlAttribute",orange,"","italic","Violet","")
 call s:X("xmlTag",purple,"","","Violet","")
-call s:X("xmlTagNameID",blue,"","","Violet","")
+call s:X("xmlEndTag",purple,"","","Violet","")
+call s:X("xmlTagName",blue,"","","Violet","")
+" call s:X("xmlEndTagName",blue,"","","Violet","")
 
 " hi! link xmlTag Statement
-hi! link xmlEndTag xmlTag
-hi! link xmlTagName xmlTagNameID
+hi! link xmlEndTag xmlEndTag
+hi! link xmlTagName xmlTagName
+" hi! link xmlEndTagName xmlEndTagName
 hi! link xmlEqual xmlTag
 hi! link xmlEntity Special
 hi! link xmlEntityPunct xmlEntity
@@ -523,23 +521,6 @@ call s:X("PreciseJumpTarget","B9ED67","405026","","White","Green")
 if !exists("g:onedark_background_color_256")
   let g:onedark_background_color_256=233
 end
-" Manual overrides for 256-color terminals. Dark colors auto-map badly.
-if !s:low_color
-  hi StatusLineNC ctermbg=235
-  hi Folded ctermbg=236
-  hi FoldColumn ctermbg=234
-  hi SignColumn ctermbg=236
-  hi CursorColumn ctermbg=234
-  hi CursorLine ctermbg=234
-  hi SpecialKey ctermbg=234
-  exec "hi NonText ctermbg=".g:onedark_background_color_256
-  exec "hi LineNr ctermbg=".g:onedark_background_color_256
-  hi DiffText ctermfg=81
-  exec "hi Normal ctermbg=".g:onedark_background_color_256
-  hi DbgBreakPt ctermbg=53
-  hi IndentGuidesOdd ctermbg=235
-  hi IndentGuidesEven ctermbg=234
-endif
 
 if exists("g:onedark_overrides")
   fun! s:load_colors(defs)
@@ -547,14 +528,14 @@ if exists("g:onedark_overrides")
       call s:X(l:group, get(l:v, 'guifg', ''), get(l:v, 'guibg', ''),
       \                 get(l:v, 'attr', ''),
       \                 get(l:v, 'ctermfg', ''), get(l:v, 'ctermbg', ''))
-      if !s:low_color
-        for l:prop in ['ctermfg', 'ctermbg']
-          let l:override_key = '256'.l:prop
-          if has_key(l:v, l:override_key)
-            exec "hi ".l:group." ".l:prop."=".l:v[l:override_key]
-          endif
-        endfor
-      endif
+      " if !s:low_color
+        " for l:prop in ['ctermfg', 'ctermbg']
+          " let l:override_key = '256'.l:prop
+          " if has_key(l:v, l:override_key)
+            " exec "hi ".l:group." ".l:prop."=".l:v[l:override_key]
+          " endif
+        " endfor
+      " endif
       unlet l:group
       unlet l:v
     endfor
