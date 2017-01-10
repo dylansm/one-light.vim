@@ -219,20 +219,10 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
     exec "hi ".a:group." guifg=NONE guibg=#".a:bg." ctermfg=NONE ctermbg=".s:rgb(a:bg)
   endif
 
-  " if a:attr == ""
-    " exec "hi ".a:group." gui=none cterm=none"
-  " else
-    " let l:noitalic = join(filter(split(a:attr, ","), "v:val !=? 'italic'"), ",")
-    " if empty(l:noitalic)
-      " let l:noitalic = "none"
-    " endif
-    " exec "hi ".a:group." gui=".a:attr." cterm=".l:noitalic
-  " endif
 endfun
 " }}}
 
-"let background_color = "292c33"
-let background_color = "303030"
+" let background_color = "303030"
 let normal_font_color = "ABB2BF"
 let blue = "61afef"
 let purple = "c678dd"
@@ -243,18 +233,13 @@ let red = "e06c75"
 let cyan = "56b6c2"
 
 if !exists("g:onedark_background_color")
-  "let g:onedark_background_color = "292c33"
-  let g:onedark_background_color = "303030"
+  let g:onedark_background_color = "393939"
 end
 
 call s:X("Normal",normal_font_color,g:onedark_background_color,"","5f6b85","")
-set background=dark
+" set background=dark
 
-if !exists("g:onedark_use_lowcolor_black") || g:onedark_use_lowcolor_black
-    let s:termBlack = "Black"
-else
-    let s:termBlack = "Grey"
-endif
+let s:termBlack = "Grey"
 
 if version >= 700
   "call s:X("CursorLine","","282828","","",s:termBlack)
