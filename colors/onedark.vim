@@ -6,12 +6,12 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "onedark"
+let colors_name = "onelight"
 
 let s:low_color = 0
 
 " Color approximation functions by Henry So, Jr. and David Liang {{{
-" Added to onedark.vim by Daniel Herbert
+" Added to onelight.vim by Daniel Herbert
 
 " returns an approximate grey index for the given grey level
 fun! s:grey_number(x)
@@ -232,11 +232,11 @@ let orange = "d19a66"
 let red = "e06c75"
 let cyan = "56b6c2"
 
-if !exists("g:onedark_background_color")
-  let g:onedark_background_color = "393939"
+if !exists("g:onelight_background_color")
+  let g:onelight_background_color = "fdf6e4"
 end
 
-call s:X("Normal",normal_font_color,g:onedark_background_color,"","5f6b85","")
+call s:X("Normal",normal_font_color,g:onelight_background_color,"","5f6b85","")
 " set background=dark
 
 let s:termBlack = "Grey"
@@ -259,9 +259,9 @@ if version >= 700
 endif
 
 call s:X("Visual","","404040","","",s:termBlack)
-call s:X("Cursor",g:onedark_background_color,"b0d0f0","","","")
+call s:X("Cursor",g:onelight_background_color,"b0d0f0","","","")
 
-call s:X("LineNr","605958",g:onedark_background_color,"none",s:termBlack,"")
+call s:X("LineNr","605958",g:onelight_background_color,"none",s:termBlack,"")
 call s:X("CursorLineNr","ccc5c4","","none","White","")
 call s:X("Comment","5f6b85","","italic","Grey","")
 call s:X("Todo","c7c7c7","","bold","White",s:termBlack)
@@ -299,9 +299,9 @@ call s:X("Typedef",yellow,"","","DarkYellow","")
 hi! link Operator Structure
 
 call s:X("Type",purple,"","","Violet","")
-call s:X("NonText","606060",g:onedark_background_color,"",s:termBlack,"")
+call s:X("NonText","606060",g:onelight_background_color,"",s:termBlack,"")
 
-call s:X("SpecialKey","444444",g:onedark_background_color,"",s:termBlack,"")
+call s:X("SpecialKey","444444",g:onelight_background_color,"",s:termBlack,"")
 
 call s:X("Search","","63535B","underline","Magenta","")
 
@@ -503,11 +503,11 @@ call s:X("IndentGuidesEven","","1b1b1b","","","")
 hi! link TagListFileName Directory
 call s:X("PreciseJumpTarget","B9ED67","405026","","White","Green")
 
-if !exists("g:onedark_background_color_256")
-  let g:onedark_background_color_256=233
+if !exists("g:onelight_background_color_256")
+  let g:onelight_background_color_256=233
 end
 
-if exists("g:onedark_overrides")
+if exists("g:onelight_overrides")
   fun! s:load_colors(defs)
     for [l:group, l:v] in items(a:defs)
       call s:X(l:group, get(l:v, 'guifg', ''), get(l:v, 'guibg', ''),
@@ -525,7 +525,7 @@ if exists("g:onedark_overrides")
       unlet l:v
     endfor
   endfun
-  call s:load_colors(g:onedark_overrides)
+  call s:load_colors(g:onelight_overrides)
   delf s:load_colors
 endif
 
