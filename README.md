@@ -1,6 +1,6 @@
-# one-dark.vim
+# one-light.vim
 
-Building a vim version of the default Atom dark color scheme. Using elements of Jellybeans and Solarized to accomplish the task.
+Building a vim version of the default Atom dark color scheme, but light this time. Using elements of Jellybeans and Solarized to accomplish the task.
 
 ## This is a work in progress
 This color palette will not work unless your editor supports 24-bit (true)
