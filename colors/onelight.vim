@@ -232,9 +232,9 @@ let orange = "d19a66"
 let red = "e06c75"
 let cyan = "56b6c2"
 
-if !exists("g:onelight_background_color")
-  let g:onelight_background_color = "fdf6e4"
-end
+" if !exists("g:onelight_background_color")
+  " let g:onelight_background_color = "fdf6e4"
+" end
 
 call s:X("Normal",normal_font_color,g:onelight_background_color,"","fdf6e4","")
 " set background=dark
