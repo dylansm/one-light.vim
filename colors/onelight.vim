@@ -1,4 +1,4 @@
-" set background=light
+set background=light
 
 hi clear
 
@@ -222,7 +222,6 @@ fun! s:X(group, fg, bg, attr, lcfg, lcbg)
 endfun
 " }}}
 
-" let background_color = "303030"
 let normal_font_color = "ABB2BF"
 let blue = "61afef"
 let purple = "c678dd"
@@ -233,18 +232,16 @@ let red = "e06c75"
 let cyan = "56b6c2"
 
 if !exists("g:onelight_background_color")
-  let g:onelight_background_color = "fdf6e4"
+  " let g:onelight_background_color = "fdf6e4"
+  let g:onelight_background_color = "ffffff"
 end
 
 call s:X("Normal",normal_font_color,g:onelight_background_color,"","fdf6e4","")
-" set background=dark
 
 let s:termBlack = "Grey"
 
 if version >= 700
-  "call s:X("CursorLine","","282828","","",s:termBlack)
   call s:X("CursorLine","","3E3D37","","",s:termBlack)
-  "call s:X("CursorColumn","","242424","","",s:termBlack)
   call s:X("CursorColumn","","3E3D37","","",s:termBlack)
   call s:X("MatchParen","ffffff","556779","bold","","DarkCyan")
 
@@ -502,10 +499,6 @@ call s:X("IndentGuidesEven","","1b1b1b","","","")
 
 hi! link TagListFileName Directory
 call s:X("PreciseJumpTarget","B9ED67","405026","","White","Green")
-
-" if !exists("g:onelight_background_color_256")
-  " let g:onelight_background_color_256=233
-" end
 
 if exists("g:onelight_overrides")
   fun! s:load_colors(defs)
