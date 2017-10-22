@@ -236,7 +236,7 @@ if !exists("g:onelight_background_color")
   let g:onelight_background_color = "fdf6e4"
 end
 
-call s:X("Normal",normal_font_color,g:onelight_background_color,"","5f6b85","")
+call s:X("Normal",normal_font_color,g:onelight_background_color,"","fdf6e4","")
 " set background=dark
 
 let s:termBlack = "Grey"
