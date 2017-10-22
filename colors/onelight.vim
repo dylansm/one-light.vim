@@ -1,4 +1,4 @@
-set background=light
+" set background=light
 
 hi clear
 
