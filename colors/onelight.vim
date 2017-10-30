@@ -6,7 +6,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "onelight"
+let g:colors_name = "onelight"
 
 let s:low_color = 0
 
@@ -232,7 +232,7 @@ let red = "e06c75"
 let cyan = "56b6c2"
 
 if !exists("g:onelight_background_color")
-  let g:onelight_background_color = "fdfdf4"
+  let g:onelight_background_color = ""
 end
 
 call s:X("Normal",normal_font_color,g:onelight_background_color,"","fdf6e4","")
@@ -306,7 +306,6 @@ call s:X("ErrorMsg","","902020","","","DarkRed")
 hi! link Error ErrorMsg
 hi! link MoreMsg Special
 call s:X("Question","65C254","","","Green","")
-
 
 " Spell Checking
 
